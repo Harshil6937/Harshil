@@ -1,42 +1,27 @@
 #include<stdio.h>
-
-struct student{
-	char name[50];
-	float per;
-	int age;
-};
-
-  	void main(){
-	
-	struct student s[100];
-	int i,n,max_index;
-	float max;
-	printf("Enter n:");
-	scanf("%d",&n);
-	
-	for(i=0;i<n;i++)
+void main()
 {
-	printf("Enter Data For %d student\n",i+1);
-	printf("Enter Name:");
-	scanf("%s",s[i].name);
-	printf("Enter Percentage:");
-	scanf("%f",&s[i].per);
-	printf("Enter Age:");
-	scanf("%d",&s[i].age);
+	int a,*p;
+	float b,*q;
+	double c,*r;
+	char d,*s;
+	
+	p=&a;
+	q=&b;
+	r=&c;
+	s=&d;
+	
+	printf("Enter value of int:");
+	scanf("%d",&a);
+	printf("Enter value of float:");
+	scanf("%f",&b);
+	printf("Enter value of double:");
+	scanf("%lf",&c);
+	printf("Enter value of char:");
+	scanf("%s",&d);
+	
+	printf("INT-Value=%d,Address=%u\n",*p,p);
+	printf("FLOAT-Value=%f,Address=%u\n",*q,q);
+	printf("DOUBLE-Value=%lf,Address=%u\n",*r,r);
+	printf("CHAR-Value=%c,Address=%u\n",*s,s);
 }
-
- 	for(i=0;i<n;i++)
- 	{
- 	 	max=s[0].per;
- 	 	if(max<s[i].per)
- 	 	{
- 	 		max=s[i].per;
- 	 		max_index=i;
-		  }
-    }
-   printf("Highest Percentage Student Details:\n");
-   printf("Name:%s\n",s[max_index].name);
-   printf("Per:%f%\n",s[max_index].per);
-   printf("Age:%d\n",s[max_index].age);
-}
-
