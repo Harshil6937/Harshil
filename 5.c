@@ -1,49 +1,36 @@
 #include<stdio.h>
 void main()
 {
-	int n,a[50],*ptr[50];
-	int i;
-	int b[50],*p[50];
+	int i,j,n,a[50],*p[50],temp;
 	
-	printf("Enter N");
+	printf("Enter n:\n");
 	scanf("%d",&n);
 	
-	printf("Enter Value of 1 array");
+	printf("Enter Value\n");
 	
 	for(i=0;i<n;i++)
 	{
 		scanf("%d",&a[i]);
-		ptr[i]=&a[i];
+		p[i]=&a[i];
 	}
 	
-	printf("Enter Value of 2 array");
+	for(i=0;i<n-1;i++)
+	{
+		for(j=i+1;j<n;j++)
+		{
+		if(*p[i]>*p[j])
+			{
+			temp=*p[i];
+			*p[i]=*p[j];
+			*p[j]=temp;
+			}
+		}
+	}
 	
+	printf("Sort:\n");
 	for(i=0;i<n;i++)
 	{
-		scanf("%d",&b[i]);
-		p[i]=&b[i];
+		printf("%d\n",*p[i]);
 	}
-	
-	for(i=0;i<n;i++)
-	{
-		int temp;
-		temp=*ptr[i];
-		*ptr[i]=*p[i];
-		*p[i]=temp;
 	}
-	
-	printf("After Swap:");
-	printf("First Array");
-	for(i=0;i<n;i++)
-	{
-	printf("%d\n",*ptr[i]);		
-	}
-	
-	printf("Second Array");
-	
-	for(i=0;i<n;i++)
-	{
-	printf("%d\n",*p[i]);	
-	}
-	
-}
+

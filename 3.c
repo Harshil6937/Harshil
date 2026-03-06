@@ -1,17 +1,35 @@
 #include<stdio.h>
 void main()
 {
-	int a,*p=&a;
-	int b,*q=&b;
-	int sum=0,*s=&sum;
+	int i,n,a[50];
+	printf("Enter N:");
+	scanf("%d",&n);
 	
-	printf("Enter value of a:");
-	scanf("%d",&a);
+	int *ptr = a;
 	
-	printf("Enter value of b:");
-	scanf("%d",&b);
+	printf("Enter Elements:\n");
 	
-	*s=*p+*q;
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",(ptr+i));
+	}
 	
-	printf("Sum=%d",*s);
+	printf("Even Numbers:\n");
+	
+	for(i=0;i<n;i++)
+	{
+		if(*(ptr+i)%2==0){
+			printf(" %d",*(ptr+i));
+		}
+	 	
+	}
+	
+	printf("\nOdd Numbers:\n");
+	
+	for(i=0;i<n;i++)
+	{
+		if(*(ptr+i)%2!=0){
+			printf(" %d",*(ptr+i));
+		}
+	}
 }

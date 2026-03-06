@@ -1,31 +1,35 @@
 #include<stdio.h>
 void main()
 {
-	int n,a[50];
-	int *ptr=&a;
-	int b[50];
-	int*p=&b;
-	int i;
-	
-	
-	
-	printf("ENTER N:");
+	int i,n,a[50],p[50];
+	printf("Enter N:");
 	scanf("%d",&n);
+	 			   
+	int *ptr = a;
 	
-	printf("Enter %d elements",n);
+	printf("Enter Elements:\n");
+	
 	for(i=0;i<n;i++)
 	{
-		scanf("%d",&a[i]);
+		scanf("%d",(ptr+i));
 	}
-
-
+	
+	printf("Positive Numbers:\n");
+	
 	for(i=0;i<n;i++)
 	{
-		*(p+i)=*(ptr+i);
+		if(*(ptr+i)>0){
+			printf(" %d",*(ptr+i));
+		}
+	 	
 	}
-	printf("copy array:");
+	
+	printf("\nNegative Numbers:\n");
+	
 	for(i=0;i<n;i++)
 	{
-		printf("%d\n",*(p+i));
+		if(*(ptr+i)<0){
+			printf(" %d",*(ptr+i));
+		}
 	}
 }

@@ -1,13 +1,23 @@
 #include<stdio.h>
 void main()
 {
-	int a,*p=&a;
-	//p=&a;
+	int a,b;
+	int *p,*q;
+	p=&a;
+	q=&b;
 	
-	printf("Enter Value of a:");
+	printf("Enter A:");
 	scanf("%d",&a);
 	
-	printf("Value of A=%d\n",*p);
+	printf("Enter B:");
+	scanf("%d",&b);
 	
-	printf("Address of A=%u",p);
+	printf("Before:A=%d,B=%d\n",a,b);
+
+	int temp;
+	temp=*p;
+	*p=*q;
+	*q=temp;
+	
+	printf("After:A=%d,B=%d\n",a,b);
 }
