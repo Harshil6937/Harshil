@@ -1,35 +1,21 @@
 #include<stdio.h>
+#include<string.h>
 void main()
 {
-	int i,n,a[50];
-	printf("Enter N:");
-	scanf("%d",&n);
+
+	char str[100];
 	
-	int *ptr = a;
+	int i,len=0;
 	
-	printf("Enter Elements:\n");
+	printf("Enter String");
+	gets(str);
 	
-	for(i=0;i<n;i++)
+	char *p = str;
+	while(*p!='\0')
 	{
-		scanf("%d",(ptr+i));
+		len++;
+		p++;
 	}
 	
-	printf("Even Numbers:\n");
-	
-	for(i=0;i<n;i++)
-	{
-		if(*(ptr+i)%2==0){
-			printf(" %d",*(ptr+i));
-		}
-	 	
-	}
-	
-	printf("\nOdd Numbers:\n");
-	
-	for(i=0;i<n;i++)
-	{
-		if(*(ptr+i)%2!=0){
-			printf(" %d",*(ptr+i));
-		}
-	}
+	printf("Length=%d",len);
 }

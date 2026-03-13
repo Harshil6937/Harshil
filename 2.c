@@ -1,23 +1,40 @@
 #include<stdio.h>
 void main()
 {
-	int i,n,a[50],*p[50];
+	int m,n;
+	int a[100][100];
+	int *p[100][100];
 	
-	printf("Enter n:");
+	int i,j;
+
+	printf("Enter M:");
+	scanf("%d",&m);
+
+	printf("Enter N:");
 	scanf("%d",&n);
 	
-	printf("Enter Value\n");
 	
-	for(i=0;i<n;i++)
+	printf("Enter Matrix-1");
+	
+	for(i=0;i<m;i++)
 	{
-		scanf("%d",&a[i]);
-		p[i]=&a[i];
+		for(j=0;j<n;j++)
+		{
+			scanf("%d",&a[i][j]);
+			p[i][j] = &a[i][j];
+		}
 	}
 	
-	printf("Entered Array Is:\n");
 	
-	for(i=0;i<n;i++)
+	for(j=0;j<n;j++)
 	{
-		printf("%d\n",*p[i]);
+		int sum=0;
+		for(i=0;i<m;i++)
+		{
+			sum = sum + *p[i][j];
+		}
+		printf("Sum=%d\n",sum);
 	}
+	
+	
 }
