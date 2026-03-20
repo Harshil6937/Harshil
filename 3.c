@@ -1,21 +1,24 @@
 #include<stdio.h>
-#include<string.h>
+#include<stdlib.h>
+
 void main()
 {
-
-	char str[100];
+	int *ptr,n,i,sum=0;
 	
-	int i,len=0;
+	printf("Enter Value of n\n");
+	scanf("%d",&n);
 	
-	printf("Enter String");
-	gets(str);
+	ptr=(int *) calloc (n , sizeof(int));
 	
-	char *p = str;
-	while(*p!='\0')
+	printf("Enter %d value\n",n);
+	
+	for(i=0;i<n;i++)
 	{
-		len++;
-		p++;
+		scanf("%d",(ptr+i));
+		sum=sum+*(ptr+i);
 	}
 	
-	printf("Length=%d",len);
+	printf("Sum=%d",sum);
+	
+	free(ptr);
 }

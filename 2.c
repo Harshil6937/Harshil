@@ -1,40 +1,24 @@
 #include<stdio.h>
+#include<stdlib.h>
+
 void main()
 {
-	int m,n;
-	int a[100][100];
-	int *p[100][100];
+	int *ptr,n,i,sum=0;
 	
-	int i,j;
-
-	printf("Enter M:");
-	scanf("%d",&m);
-
-	printf("Enter N:");
+	printf("Enter Value of n\n");
 	scanf("%d",&n);
 	
+	ptr=(int *) malloc (n * sizeof(int));
 	
-	printf("Enter Matrix-1");
+	printf("Enter %d value\n",n);
 	
-	for(i=0;i<m;i++)
+	for(i=0;i<n;i++)
 	{
-		for(j=0;j<n;j++)
-		{
-			scanf("%d",&a[i][j]);
-			p[i][j] = &a[i][j];
-		}
+		scanf("%d",(ptr+i));
+		sum=sum+*(ptr+i);
 	}
 	
+	printf("Sum=%d",sum);
 	
-	for(j=0;j<n;j++)
-	{
-		int sum=0;
-		for(i=0;i<m;i++)
-		{
-			sum = sum + *p[i][j];
-		}
-		printf("Sum=%d\n",sum);
-	}
-	
-	
+	free(ptr);
 }

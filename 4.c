@@ -1,35 +1,40 @@
 #include<stdio.h>
+#include<stdlib.h>
+
 void main()
 {
-	int i,n,a[50],p[50];
-	printf("Enter N:");
+	int *ptr,n,i;
+	int newsize;
+	printf("Enter Size");
 	scanf("%d",&n);
-	 			   
-	int *ptr = a;
 	
-	printf("Enter Elements:\n");
+	ptr=(int *) malloc (n * sizeof(int));
+	
+	printf("Enter %d value\n",n);
 	
 	for(i=0;i<n;i++)
 	{
 		scanf("%d",(ptr+i));
 	}
-	
-	printf("Positive Numbers:\n");
-	
+	printf("Value:");
 	for(i=0;i<n;i++)
 	{
-		if(*(ptr+i)>0){
-			printf(" %d",*(ptr+i));
-		}
-	 	
+		printf("%d\n",*(ptr+i));
 	}
+	printf("Enter New Size:");
+	scanf("%d",&newsize);
+	ptr=realloc(ptr,newsize);
 	
-	printf("\nNegative Numbers:\n");
+	printf("Enter %d value\n",newsize);
 	
-	for(i=0;i<n;i++)
+	for(i=0;i<newsize;i++)
 	{
-		if(*(ptr+i)<0){
-			printf(" %d",*(ptr+i));
-		}
+		scanf("%d",(ptr+i));
 	}
-}
+	printf("Values:\n");
+	for(i=0;i<newsize;i++)
+	{
+		printf("%d\n",*(ptr+i));
+	}
+	free(ptr);
+	}

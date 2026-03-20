@@ -1,59 +1,32 @@
 #include<stdio.h>
 void main()
 {
-	int m,n;
-	int a[100][100],b[100][100],c[100][100];
-	int *p[100][100];
-	int *q[100][100];
-	int *r[100][100];
-	int i,j;
-
-	printf("Enter M:");
-	scanf("%d",&m);
-
+	int *ptr,n,i;
+	float *fptr;
+	char *cptr;
+	
 	printf("Enter N:");
 	scanf("%d",&n);
 	
+	ptr=(int *) malloc (n * sizeof(int));
+	fptr=(float *) malloc (n * sizeof(float));
+	cptr=(int *) malloc (n * sizeof(char));
 	
-	printf("Enter Matrix-1");
-	
-	for(i=0;i<n;i++)
+	if(ptr!= '\0' && fptr!='\0' && cptr!='\0' )
 	{
-		for(j=0;j<m;j++)
-		{
-			scanf("%d",&a[i][j]);
-			p[i][j] = &a[i][j];
-		}
+		printf("Memory Allocated Succesfully:\n");
 	}
 	
-   printf("%d",*p[0][0]);
+	*ptr=25;
+	*fptr=7.77;
+	*cptr='H';
 	
-	printf("Enter Matrix-2");
+	printf("Integer:%d\n",*ptr);
+	printf("Float:%f\n",*fptr);
+	printf("Char:%c\n",*cptr);
 	
-	for(i=0;i<n;i++)
-	{
-		for(j=0;j<m;j++)
-		{
-			scanf("%d",&b[i][j]);
-			q[i][j] = &b[i][j];
-		}
-	}
-	
-	for(j=0;j<m;j++)
-	{
-		for(i=0;i<n;i++)
-		{
-			c[i][j]=*p[i][j]+*q[i][j];
-			r[i][j] = &c[i][j];
-		}
-	}
-	
-	for(i=0;i<n;i++)
-	{
-		for(j=0;j<m;j++)
-		{
-			printf("%d \t",*r[i][j]);
-		}
-		printf("\n");
-	}
+	free(ptr);
+	free(fptr);
+	free(cptr);
+
 }
