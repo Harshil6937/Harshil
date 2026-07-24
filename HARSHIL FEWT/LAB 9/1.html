@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	<form name="myform">
+		
+		Username: <input type="text" name="uname"><br><br>
+		Password: <input type="Password" name="pass"><br><br>
+		Confirm Password : <input type="Password" name="cpass"><br><br>
+		Age: <input type="date" name="age"><br><br>
+		Enrollment No: <input type="text" name="enrollno"><br><br>
+		Email: <input type="text" name="email"><br><br>
+
+		<button onclick="hp()">Submit</button>
+	</form>
+
+
+	<script type="text/javascript">
+		
+		function hp ()
+		{
+
+		var f=document.forms['myform'];
+		var u=f.uname.value;
+		var p=f.pass.value;
+		var c=f.cpass.value;
+		var a=f.age.value;
+		var en=f.enrollno.value;
+		var e=f.email.value;
+
+		var uregex=/^[a-z]{8,}$/;
+
+		if(!uregex.test(u))
+		{
+			alert("Username Must Greater Than 8");
+			
+		}
+
+		var pregex=/^[0-9!@#$^&*%a-zA-z]{8,12}$/;
+
+		if(!pregex.test(p))
+		{
+			alert("Password must contain 1 Special Character and One Digit And must Between 8 and 12");
+			
+
+		}
+
+		if(p!=c)
+		{
+			alert("Password Do Not Match");
+			
+		
+		}
+
+		var nd=new Date(a);
+		var today =new Date();
+		var x1 = today.getFullYear() - nd.getFullYear();
+		if(x1<=18)
+		{
+			alert("Age Must Be Greater Than 18");
+			return;
+		}
+	}
+	
+		
+
+
+	</script>
+
+</body>
+</html>
