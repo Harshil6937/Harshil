@@ -10,6 +10,7 @@
 			static String [] mobileno = new String [100];
 			static String [] gender = new String[100]; 
 			static String [] address = new String[100];
+			static String [] acctype = new String [100]; 
 			static int [] age = new int [100];
 			static int count=0;
 			static double [] balance = new double [100];
@@ -150,9 +151,28 @@
 				
 					System.out.print("Enter Address:");
 			String	addres=obj.nextLine().trim();
-					
+
+					String  typ;
+
+					while(true)
+					{
+					System.out.println("Enter Account Type(Saving/Current)");
+				    typ=obj.nextLine().trim();
+
+					if(typ.equalsIgnoreCase("Saving") || typ.equalsIgnoreCase("Current"))
+				    {
+				        break;
+				    }
+				    else
+				    {
+				        System.out.println("Please Enter Correct Account Type!");
+				    }
+
+					}
+
 					System.out.print("Enter Opening Balance (Minimum Rs.10000): ");
 			Double	balances=obj.nextDouble();
+					
 					obj.nextLine();
 
 					if(balances<10000)
@@ -170,6 +190,7 @@
 					adhar[count]=adharno;
 					pan[count]=panno;
 					address[count]=addres;
+					acctype[count]=typ;
 					balance[count]=balances;
 
 					count++;		
@@ -263,7 +284,7 @@
 
 			balance[currentUser]+=amount;
 
-			System.out.println("Deposit Successful!");
+			System.out.println("Deposit Successful!"+"\n");
 		} 
 
 		public static void withdraw()
@@ -308,6 +329,7 @@
     		System.out.println("Aadhar Number   : " + adhar[currentUser]);
     		System.out.println("PAN Number      : " + pan[currentUser]);
     		System.out.println("Address         : " + address[currentUser]);
+    		System.out.println("Account Type    : " + acctype[currentUser]);
     		System.out.println("Balance         : " + balance[currentUser]+"\n");
 		}
 
