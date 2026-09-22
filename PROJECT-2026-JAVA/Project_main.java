@@ -1,19 +1,29 @@
 	import java.util.Scanner;
+
+	class User
+	{
+		String username;
+		String password;
+		String email;
+		String adhar;
+		String pan;
+		String mobileno;
+		String gender;
+		String address;
+		String acctype;
+
+		int age;
+		double balance;
+
+	}
+
 	public class Project_main
 	{		
 			static Scanner obj=new Scanner(System.in);
-			static String [] username = new String [100];
-			static String [] password = new String [100];
-			static String [] email = new String [100];
-			static String [] adhar = new String [100];
-			static String [] pan = new String [100];
-			static String [] mobileno = new String [100];
-			static String [] gender = new String[100]; 
-			static String [] address = new String[100];
-			static String [] acctype = new String [100]; 
-			static int [] age = new int [100];
+			
+			static User [] user = new User [100];
+
 			static int count=0;
-			static double [] balance = new double [100];
 			static int currentUser = -1;
 
 		public static void main(String [] s) {
@@ -64,7 +74,7 @@
 		{	
 					if(count == 100)
 				    {
-				        System.out.println("Maximum Number Of Users Reached!");
+				        System.out.println("Maximum Number Of user Reached!");
 				        return;
 				    }
 
@@ -73,7 +83,7 @@
 
 					for(int i = 0; i < count; i++)
 					{
-					    if(username[i].equals(name))
+					    if(user[i].username.equals(name))
 					    {
 					        System.out.println("Username Already Exists!");
 					        return;
@@ -181,22 +191,81 @@
 						return;
 					}
 
-					username[count]=name;
-					password[count]=pass;
-					gender[count]=gen;
-					age[count]=ages;
-					email[count]=emails;
-					mobileno[count]=mn;
-					adhar[count]=adharno;
-					pan[count]=panno;
-					address[count]=addres;
-					acctype[count]=typ;
-					balance[count]=balances;
+					user[count] = new User();
+
+					user[count].username=name;
+					user[count].password=pass;
+					user[count].gender=gen;
+					user[count].age=ages;
+					user[count].email=emails;
+					user[count].mobileno=mn;
+					user[count].adhar=adharno;
+					user[count].pan=panno;
+					user[count].address=addres;
+					user[count].acctype=typ;
+					user[count].balance=balances;
 
 					count++;		
 					System.out.println("\nRegistration Successful!");
 		}
 
+		public static boolean validatePass(String pass)
+		{
+			if(pass.length() < 8)
+			{
+				return false;
+			}
+
+			boolean upper = false;
+			boolean lower = false;
+			boolean num = false;
+			boolean special = false;
+
+			for(int i=0; i<pass.length() ; i++)
+			{
+				char ch = pass.charAt(i);
+
+				if(Character.isUpperCase(ch))
+				{
+					upper = true;
+				}
+
+				else if(Character.isLowerCase(ch))
+				{
+					lower = true;
+				}
+
+				else if(Character.isDigit(ch))
+				{
+					num = true;
+				}
+
+				else{
+					special = true;
+				}
+			}
+
+			return upper && lower && num && special;		
+		}
+
+		public static boolean validateEmail(String mail)
+		{
+			boolean at = false;
+
+			for(int i=0; i<mail.length(); i++)
+			{
+				char ch = mail.charAt(i);
+
+				if(ch=='@')
+				{
+					at = true;
+					break;
+				}
+			}
+
+			return at;
+		}
+		
 		public static void login()
 		{
 					System.out.println("Enter Username:");
@@ -207,7 +276,7 @@
 				
 					for(int i=0;i<count;i++)
 					{
-						if(username[i].equals(loginusername) && password[i].equals(loginpassword))
+						if(user[i].username.equals(loginusername) && user[i].password.equals(loginpassword))
 						{
 							currentUser=i;
 							System.out.println("\nLogin Successful!\n");
@@ -275,6 +344,7 @@
 
 			System.out.println("Enter Deposit Amount:");
 			amount=obj.nextDouble();
+			obj.nextLine();
 
 			if(amount<=0)
 			{
@@ -282,7 +352,7 @@
 				return;
 			}
 
-			balance[currentUser]+=amount;
+			user[currentUser].balance+=amount;
 
 			System.out.println("Deposit Successful!"+"\n");
 		} 
@@ -293,6 +363,7 @@
 
 			System.out.println("Enter Withdraw Amount!");
 			amount=obj.nextDouble();
+			obj.nextLine();	
 
 			if(amount<=0)
 			{
@@ -300,37 +371,36 @@
 				return;
 			}
 
-			if(amount > balance[currentUser])
+			if(amount > user[currentUser].balance)
 			{
 				System.out.println("Insufficient Balance!"+"\n");
 				return;
 			}
 
-			balance[currentUser]-=amount;
+			user[currentUser].balance-=amount;
 
 			System.out.println("Withdraw Successful!"+"\n");
 		}
 
 		public static void showBalance()
 		{
-			 System.out.println("Balance: Rs." + balance[currentUser]+"\n");
+			 System.out.println("Balance: Rs." + user[currentUser].balance+"\n");
 		}
 
 		public static void viewAccountDetails()
 		{
 			System.out.println("\n===== ACCOUNT DETAILS =====");
 
-			System.out.println("Name            : " + username[currentUser]);
-    		System.out.println("Password        : " + password[currentUser]);
-    		System.out.println("Gender          : " + gender[currentUser]);
-    		System.out.println("Age             : " + age[currentUser]);
-    		System.out.println("Email           : " + email[currentUser]);
-    		System.out.println("Mobile No       : " + mobileno[currentUser]);
-    		System.out.println("Aadhar Number   : " + adhar[currentUser]);
-    		System.out.println("PAN Number      : " + pan[currentUser]);
-    		System.out.println("Address         : " + address[currentUser]);
-    		System.out.println("Account Type    : " + acctype[currentUser]);
-    		System.out.println("Balance         : " + balance[currentUser]+"\n");
+			System.out.println("Name            : " + user[currentUser].username);
+    		System.out.println("Gender          : " + user[currentUser].gender);
+    		System.out.println("Age             : " + user[currentUser].age);
+    		System.out.println("Email           : " + user[currentUser].email);
+    		System.out.println("Mobile No       : " + user[currentUser].mobileno);
+    		System.out.println("Aadhar Number   : " + user[currentUser].adhar);
+    		System.out.println("PAN Number      : " + user[currentUser].pan);
+    		System.out.println("Address         : " + user[currentUser].address);
+    		System.out.println("Account Type    : " + user[currentUser].acctype);
+    		System.out.println("Balance         : " + user[currentUser].balance+"\n");
 		}
 
 		public static void logout()
@@ -338,61 +408,6 @@
 			currentUser=-1;
 			System.out.println("Logout Successfully!"+"\n");
 		}
-
-		public static boolean validatePass(String pass)
-		{
-			if(pass.length() < 8)
-			{
-				return false;
-			}
-
-			boolean upper = false;
-			boolean lower = false;
-			boolean num = false;
-			boolean special = false;
-
-			for(int i=0; i<pass.length() ; i++)
-			{
-				char ch = pass.charAt(i);
-
-				if(Character.isUpperCase(ch))
-				{
-					upper = true;
-				}
-
-				else if(Character.isLowerCase(ch))
-				{
-					lower = true;
-				}
-
-				else if(Character.isDigit(ch))
-				{
-					num = true;
-				}
-
-				else{
-					special = true;
-				}
-			}
-
-			return upper && lower && num && special;		
-	}
-
-	public static boolean validateEmail(String mail)
-	{
-		boolean at = false;
-
-		for(int i=0; i<mail.length(); i++)
-		{
-			char ch = mail.charAt(i);
-
-			if(ch=='@')
-			{
-				at = true;
-				break;
-			}
-		}
-
-		return at;
-	}
+	
 }
+
