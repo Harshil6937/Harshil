@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	Email Address:<input type="text" name="" id="email">
+	<br>
+	PassWord:<input type="text" name="" id="pass">
+	<br>
+	<button onclick="validate()">Click Me</button>
+
+	<script type="text/javascript">
+		
+		function validate()
+		{
+		var emailadd=document.getElementById('email').value;
+
+		var Pass=document.getElementById('pass').value;
+
+		var eregex=/^[a-z0-9+%$!]+@[a-z]+\.[a-z]{2,}$/;
+
+		var pregex=/^[!@#$%a-zA-Z0-9]{8,}$/;
+
+		if (eregex.test(emailadd) && pregex.test(Pass))
+        {
+            alert("VALID EMAIL AND PASSWORD");
+        }
+        else
+        {
+            alert("INVALID EMAIL OR PASSWORD");
+        }
+
+        }
+	</script>
+
+</body>
+</html>
