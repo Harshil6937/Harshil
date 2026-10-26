@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	<form>
+	Apple:<input type="checkbox" name="f" value="Apple">
+	Banana:<input type="checkbox" name="f" value="Banana">
+	Cherry:<input type="checkbox" name="f" value="Cherry"><br>
+	DairyMilk:<input type="checkbox" name="c" value="DairyMilk">
+	5 Star:<input type="checkbox" name="c" value="5 Star">
+	</form>
+
+	<script type="text/javascript">
+		
+		var a=document.getElementsByName('c');
+
+		for(var i=0;i<a.length;i++)
+		{
+			a[i].checked=true;
+		}
+		
+	</script>
+
+</body>
+</html>

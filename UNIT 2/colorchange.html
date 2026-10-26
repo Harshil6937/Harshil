@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	<div id="a" style="height: 200px; width: 200px; border:2px solid black;"></div>
+
+	<script type="text/javascript">
+		
+		var a=document.getElementById("a");
+		var color=["red", "green", "purple", "blue", "#32AB15"];
+		var nc=0;
+		setInterval("a.style.backgroundColor=color[nc++ % color.length]",500)
+
+	</script>
+
+</body>
+</html>
