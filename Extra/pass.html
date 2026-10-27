@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		var s=prompt("Enter Password:");
+
+		var regex=/^[a-zA-z0-9!@#$&*?]{8, }+$/
+
+		if(regex.test(s) && /[0-9]/.test(s) && /[!@#$&*?]/.test(s))
+		{
+			document.write("Valid");
+		}
+		else{
+			document.write("Invalid");
+		}
+	</script>
+
+</body>
+</html>
