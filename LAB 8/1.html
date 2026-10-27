@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	<p style="font-size: 40px;color: red;" id="ans"></p>
+
+	<script type="text/javascript">
+			
+		var a=parseInt(prompt("Enter A:"));
+		var b=parseInt(prompt("Enter B:"));
+		var choice=prompt("Enter choice between(+,-,*,/,%)");
+		var c;
+
+		switch(choice)
+		{
+			case '+' :
+				c=a+b;
+				document.getElementById('ans').innerHTML=c;
+				break;
+			case '-' :
+				c=a-b;
+				document.getElementById('ans').innerHTML=c;
+				break;
+			case '*' :
+				c=a*b;
+				document.getElementById('ans').innerHTML=c;
+				break;
+			case '/' :
+				c=a/b;
+				document.getElementById('ans').innerHTML=c;
+				break;
+			case '%' :
+				c=a-b;
+				document.getElementById('ans').innerHTML=c;
+				break;
+		}
+
+	</script>
+
+
+</body>
+</html>
